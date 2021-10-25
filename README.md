@@ -13,7 +13,7 @@ Docker Hub [repo](https://hub.docker.com/r/iascfrba/iasc-valtio-yjs-minimal-exam
 
 ## How to run it locally?
 
-Just have (yarn)[https://yarnpkg.com/] and node installed on your local environment, then just run:
+Just have [yarn](https://yarnpkg.com/) and node installed on your local environment, then just run:
 
 ```bash
 yarn init
@@ -39,3 +39,8 @@ docker run --name iasc-valtio-yjs -d -p 3000:3000 iasc-valtio-yjs-minimal-exampl
 ## Deploy with Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fiasc-valtio-yjs-minimal-example%2Fiasc-valtio-yjs-minimal-example)
+
+
+### Demo on Heroku 
+
+[demo link](https://iasc-valtio-yjs-minimal-exampl.herokuapp.com/)
