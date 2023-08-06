@@ -10,7 +10,7 @@ const ydoc = new Y.Doc();
 const websocketProvider = new WebsocketProvider(
   "wss://demos.yjs.dev",
   "valtio-yjs-demo",
-  ydoc
+  ydoc,
 );
 
 const yarray = ydoc.getArray("messages.v2");

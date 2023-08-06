@@ -2,10 +2,8 @@
   "version": 2,
   "name": "iasc-valtio-yjs-minimal-example",
   "builds": [
-    { "src": "package.json", "use": "vercel-sapper"},
+    { "src": "package.json", "use": "vercel-sapper" },
     { "src": "app.js", "use": "@vercel/node" }
   ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/app.js" }
-  ]
+  "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
 }
