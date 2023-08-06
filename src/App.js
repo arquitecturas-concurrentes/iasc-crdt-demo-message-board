@@ -4,6 +4,7 @@ import { bindProxyAndYArray } from "valtio-yjs";
 import { proxy, useSnapshot } from "valtio";
 import { useState } from "react";
 import { nanoid } from "nanoid/non-secure";
+import "./styles.css";
 
 const ydoc = new Y.Doc();
 
@@ -27,8 +28,11 @@ const MyMessage = () => {
   };
   return (
     <div>
-      Message:{" "}
-      <input value={message} onChange={(e) => setMessage(e.target.value)} />{" "}
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />{" "}
       <button disabled={!message} onClick={send}>
         Send
       </button>
@@ -47,13 +51,15 @@ const Message = ({ message }) => {
     }, 1000);
   };
   return (
-    <p>
-      [{message.vote}]
-      <button disabled={pending} onClick={voteUp}>
-        +1
-      </button>
-      : {message.text}
-    </p>
+    <div className="container">
+      <p>
+        [{message.vote}]
+        <button disabled={pending} onClick={voteUp}>
+          +1
+        </button>
+        : {message.text}
+      </p>
+    </div>
   );
 };
 
@@ -70,9 +76,9 @@ const Messages = () => {
 
 const App = () => (
   <div>
-    <h2>My Message</h2>
+    <h4>Posteá un mensaje</h4>
     <MyMessage />
-    <h2>Messages</h2>
+    <h3>Mensajes</h3>
     <Messages />
   </div>
 );

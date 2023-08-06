@@ -1,4 +1,42 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+body {
+  font-family: "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #555;
+  margin: 0 auto;
+  max-width: 50em;
+  line-height: 1.5;
+  padding: 4em 1em;
+}
+
+h3, h4 {
+  margin-top: 1em;
+  padding-top: 1em;
+  color: #333;
+}
+
+.container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
