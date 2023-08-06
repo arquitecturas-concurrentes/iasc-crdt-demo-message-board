@@ -22,7 +22,7 @@ const MyMessage = () => {
   const [message, setMessage] = useState("");
   const send = () => {
     if (message) {
-      messages.unshift({ id: nanoid(), text: message, vote: 1 });
+      messages.push({ id: nanoid(), text: message, vote: 0 });
       setMessage("");
     }
   };
@@ -64,9 +64,12 @@ const Message = ({ message }) => {
 
 const Messages = () => {
   const snap = useSnapshot(messages);
+  const sortedMessages = [...snap].sort(
+    (messageA, messageB) => messageB.vote - messageA.vote,
+  );
   return (
     <div>
-      {snap.map((message) => (
+      {sortedMessages.map((message) => (
         <Message key={message.id} message={message} />
       ))}
     </div>
