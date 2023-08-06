@@ -27,7 +27,7 @@ const MyMessage = () => {
     }
   };
   return (
-    <div>
+    <div className="row">
       <input
         type="text"
         value={message}
@@ -52,12 +52,11 @@ const Message = ({ message }) => {
   };
   return (
     <div className="container">
-      <p>
-        [{message.vote}]
+      <p className="row">
         <button disabled={pending} onClick={voteUp}>
-          +1
+          <span>▲ {message.vote}</span>
         </button>
-        : {message.text}
+        <span>{message.text}</span>
       </p>
     </div>
   );
