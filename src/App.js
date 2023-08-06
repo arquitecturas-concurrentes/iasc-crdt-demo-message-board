@@ -78,7 +78,7 @@ const Messages = () => {
 
 const App = () => (
   <div>
-    <h4>Posteá un mensaje</h4>
+    <h3>Posteá un mensaje</h3>
     <MyMessage />
     <h3>Mensajes</h3>
     <Messages />
