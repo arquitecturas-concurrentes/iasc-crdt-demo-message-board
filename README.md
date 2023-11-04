@@ -8,36 +8,11 @@ an implementation of CRDT algorithm
 
 The idea of this project is to show a simple minimal example of what yjs can do.
 
-Docker Hub [repo](https://hub.docker.com/r/iascfrba/iasc-valtio-yjs-minimal-example)
-
 ## How to run it locally?
 
-Just have [yarn](https://yarnpkg.com/) and node installed on your local environment, then just run:
+Just have node installed on your local environment, then run:
 
 ```bash
-yarn init
-yarn install
-yarn start
+npm install
+npm start
 ```
-
-## How to run it wiht docker?
-
-Build the image first
-
-```bash
-docker build -t iasc-valtio-yjs-minimal-example:latest .
-```
-
-then just run it
-
-```bash
-docker run --name iasc-valtio-yjs -d -p 3000:3000 iasc-valtio-yjs-minimal-example:latest
-```
-
-## Deploy with Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fiasc-valtio-yjs-minimal-example%2Fiasc-valtio-yjs-minimal-example)
-
-### Demo on Heroku
-
-[demo link](https://iasc-valtio-yjs-minimal-exampl.herokuapp.com/)
