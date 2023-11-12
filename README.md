@@ -1,4 +1,4 @@
-# IASC Valtio yjs example
+# CRDT Demo - Message Board - Valtio Yjs
 
 [valtio](https://github.com/pmndrs/valtio) is
 a proxy state library for ReactJS and VanillaJS.
