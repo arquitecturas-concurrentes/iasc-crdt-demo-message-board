@@ -1,12 +1,10 @@
-# IASC Valtio yjs example
+# CRDT Demo - Message Board - Automerge Repo
 
-[valtio](https://github.com/pmndrs/valtio) is
-a proxy state library for ReactJS and VanillaJS.
-[yjs](https://github.com/yjs/yjs) is
-an implementation of CRDT algorithm
-(which allows to merge client data without server coordination).
+[Automerge Repo](https://github.com/automerge/automerge-repo) is
+a library which provides fast implementations of several different CRDTs
+(which allow merging client data without server coordination), as well as pluggable networking and storage.
 
-The idea of this project is to show a simple minimal example of what yjs can do.
+The idea of this project is to show a simple minimal example of what Automerge can do.
 
 ## How to run it locally?
 
