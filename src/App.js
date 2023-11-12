@@ -1,28 +1,13 @@
-import * as Y from "yjs";
-import { WebsocketProvider } from "y-websocket";
-import { bindProxyAndYArray } from "valtio-yjs";
-import { proxy, useSnapshot } from "valtio";
 import { useState } from "react";
 import { nanoid } from "nanoid/non-secure";
+import { useBootstrap, useDocument} from "@automerge/automerge-repo-react-hooks"
 import "./styles.css";
 
-const ydoc = new Y.Doc();
-
-const websocketProvider = new WebsocketProvider(
-  "wss://demos.yjs.dev",
-  "valtio-yjs-demo",
-  ydoc,
-);
-
-const yarray = ydoc.getArray("messages.v2");
-const messages = proxy([]);
-bindProxyAndYArray(messages, yarray);
-
-const MyMessage = () => {
+const MyMessage = ({changeDoc}) => {
   const [message, setMessage] = useState("");
   const send = () => {
     if (message) {
-      messages.push({ id: nanoid(), text: message, vote: 0 });
+      changeDoc(doc => doc.messages.push({ id: nanoid(), text: message, vote: 0 }));
       setMessage("");
     }
   };
@@ -40,11 +25,13 @@ const MyMessage = () => {
   );
 };
 
-const Message = ({ message }) => {
+const Message = ({ message, changeDoc }) => {
   const [pending, setPending] = useState(false);
   const voteUp = () => {
-    const found = messages.find((item) => item.id === message.id);
-    ++found.vote;
+      changeDoc(doc => {
+          const found = doc.messages.find((item) => item.id === message.id);
+          ++found.vote;
+      })
     setPending(true);
     setTimeout(() => {
       setPending(false);
@@ -62,27 +49,43 @@ const Message = ({ message }) => {
   );
 };
 
-const Messages = () => {
-  const snap = useSnapshot(messages);
-  const sortedMessages = [...snap].sort(
+const Messages = ({doc, changeDoc}) => {
+  const sortedMessages = [...doc.messages].sort(
     (messageA, messageB) => messageB.vote - messageA.vote,
   );
   return (
     <div>
       {sortedMessages.map((message) => (
-        <Message key={message.id} message={message} />
+        <Message key={message.id} message={message} changeDoc={changeDoc} />
       ))}
     </div>
   );
 };
 
-const App = () => (
-  <div>
-    <h3>Posteá un mensaje</h3>
-    <MyMessage />
-    <h3>Mensajes</h3>
-    <Messages />
-  </div>
-);
+const MessageBoard = () => {
+    const { url } = useBootstrap({
+        onNoDocument: repo => {
+            const handle = repo.create()
+            handle.change(doc => {
+                doc.messages = []
+            })
+            return handle
+        },
+    })
+    const [doc, changeDoc] = useDocument(url);
+
+    if (!doc) {
+        return null;
+    }
+
+    return <>
+        <h3>Posteá un mensaje</h3>
+        <MyMessage changeDoc={changeDoc}/>
+        <h3>Mensajes</h3>
+        <Messages doc={doc} changeDoc={changeDoc}/>
+    </>;
+}
+
+const App = () => <MessageBoard/>;
 
 export default App;
